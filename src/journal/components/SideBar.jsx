@@ -42,7 +42,9 @@ export function SideBar({ drawerWidth = 240 }) {
 								</ListItemIcon>
 								<Grid container>
 									<ListItemText primary={text} />
-									<ListItemText secondary={'ksdfjghfksdjh kjfdghkgjhdfkgh'} />
+									<ListItemText
+										secondary={'Exercitation cillum irure elit consectetur.'}
+									/>
 								</Grid>
 							</ListItemButton>
 						</ListItem>

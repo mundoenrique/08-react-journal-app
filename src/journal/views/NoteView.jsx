@@ -36,7 +36,7 @@ export function NoteView() {
 					variant="filled"
 					fullWidth
 					multiline
-					placeholder="Ingrese una descripción"
+					placeholder="Ingresa una descripción"
 					label="Descripción"
 					minRows={5}
 				/>

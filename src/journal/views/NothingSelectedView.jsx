@@ -1,5 +1,5 @@
-import { StarOutline } from '@mui/icons-material';
 import { Grid, Typography } from '@mui/material';
+import { StarOutline } from '@mui/icons-material';
 
 export function NothingSelectedView() {
 	return (
@@ -19,7 +19,9 @@ export function NothingSelectedView() {
 				<StarOutline sx={{ fontSize: 100, color: 'white' }} />
 			</Grid>
 			<Grid item xs={12}>
-				<Typography color="white">Selecciona o crea una Entrada</Typography>
+				<Typography color="white" variant="h5">
+					Selecciona o crea una entrada
+				</Typography>
 			</Grid>
 		</Grid>
 	);

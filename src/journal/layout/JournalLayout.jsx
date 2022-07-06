@@ -1,9 +1,9 @@
 import { Box, Toolbar } from '@mui/material';
 import { NavBar, SideBar } from '../components';
 
-const drawerWidth = 240;
+const drawerWidth = 280;
 
-export default function JournalLayout({ children }) {
+export function JournalLayout({ children }) {
 	return (
 		<Box sx={{ display: 'flex' }}>
 			<NavBar drawerWidth={drawerWidth} />
