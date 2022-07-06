@@ -1,1 +1,1 @@
-export * from './JouranlPages';
+export * from './JournalPage';
