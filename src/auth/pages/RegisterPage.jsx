@@ -1,17 +1,19 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
 import { Button, Grid, Link, TextField, Typography } from '@mui/material';
 import { AuthLayout } from '../layout/AuthLayout';
 import { useForm } from '../../hooks';
+import { creatatingUserWithEmailPassword } from '../../store/auth';
 
 const formData = {
-	displayMame: '',
+	displayName: '',
 	email: '',
 	password: '',
 };
 
 const formValidations = {
-	displayMame: [(value) => value.length >= 1, 'El nombre es requerido.'],
+	displayName: [(value) => value.length >= 1, 'El nombre es requerido.'],
 	email: [(value) => value.includes('@'), 'El correo debe contener "@".'],
 	password: [
 		(value) => value.length >= 6,
@@ -19,15 +21,16 @@ const formValidations = {
 	],
 };
 export function RegisterPage() {
+	const dispatch = useDispatch();
 	const [formSubmitted, setFormSubmitted] = useState(false);
 
 	const {
 		formState,
-		displayMame,
+		displayName,
 		email,
 		password,
 		isFormValid,
-		displayMameValid,
+		displayNameValid,
 		emailValid,
 		passwordValid,
 		onInputchange,
@@ -38,14 +41,12 @@ export function RegisterPage() {
 		setFormSubmitted(true);
 
 		if (isFormValid) {
-			console.log(formState);
-			// dispatch(checkingAuthentication(formState));
+			dispatch(creatatingUserWithEmailPassword(formState));
 		}
 	};
 
 	return (
 		<AuthLayout title="Crear Cuenta">
-			{/* <h4>{JSON.stringify(isFormValid).toLocaleUpperCase()}</h4> */}
 			<form onSubmit={handleRegister}>
 				<Grid container>
 					<Grid item xs={12} sx={{ mt: 2 }}>
@@ -55,11 +56,11 @@ export function RegisterPage() {
 							placeholder="Tu nombre"
 							autoComplete="off"
 							fullWidth
-							name="displayMame"
-							value={displayMame}
+							name="displayName"
+							value={displayName}
 							onChange={onInputchange}
-							error={!!displayMameValid && formSubmitted}
-							helperText={displayMameValid}
+							error={!!displayNameValid && formSubmitted}
+							helperText={displayNameValid}
 						/>
 					</Grid>
 					<Grid item xs={12} sx={{ mt: 2 }}>
