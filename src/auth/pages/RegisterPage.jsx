@@ -27,6 +27,7 @@ const formValidations = {
 		'La contraseña debe tener al menos 6 caracteres.',
 	],
 };
+
 export function RegisterPage() {
 	const dispatch = useDispatch();
 	const { status, errorMessage } = useSelector((state) => state.auth);
