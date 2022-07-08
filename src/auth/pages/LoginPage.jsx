@@ -41,6 +41,7 @@ export function LoginPage() {
 							type="email"
 							placeholder="correo@server.xxx"
 							fullWidth
+							disabled={isAuthenticating}
 							name="email"
 							value={email}
 							onChange={onInputchange}
@@ -52,6 +53,7 @@ export function LoginPage() {
 							type="password"
 							placeholder="Contraseña"
 							fullWidth
+							disabled={isAuthenticating}
 							name="password"
 							value={password}
 							onChange={onInputchange}
