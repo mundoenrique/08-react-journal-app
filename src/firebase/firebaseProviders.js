@@ -94,3 +94,7 @@ export async function loginUserWithEmaiPassword(userInfo) {
 		};
 	}
 }
+
+export async function logoutFirebase() {
+	return await firebaseAuth.signOut();
+}

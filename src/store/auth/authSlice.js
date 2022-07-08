@@ -25,7 +25,7 @@ export const authSlice = createSlice({
 			return {
 				...authInit,
 				status: 'no-authenticate',
-				errorMessage: payload.errorMessage,
+				errorMessage: payload?.errorMessage,
 			};
 		},
 		checkingCredencial: (state) => {

@@ -1,5 +1,6 @@
 import {
 	loginUserWithEmaiPassword,
+	logoutFirebase,
 	registerUserWithEmaiPassword,
 	signInWithGoogle,
 } from '../../firebase';
@@ -44,5 +45,13 @@ export function checkingAuthentication(userInfo) {
 		}
 
 		dispatch(login(result));
+	};
+}
+
+export function signOutUser() {
+	return async function (dispatch) {
+		await logoutFirebase();
+
+		dispatch(logout({}));
 	};
 }
