@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export const authInit = {
-	status: 'no-authenticate',
+	status: 'checking',
 	uid: null,
 	email: null,
 	displayName: null,
@@ -24,6 +24,7 @@ export const authSlice = createSlice({
 		logout: (state, { payload }) => {
 			return {
 				...authInit,
+				status: 'no-authenticate',
 				errorMessage: payload.errorMessage,
 			};
 		},
