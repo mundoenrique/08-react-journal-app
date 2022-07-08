@@ -62,7 +62,10 @@ export function LoginPage() {
 
 	return (
 		<AuthLayout title="Iniciar sesión">
-			<form onSubmit={handleSignIn}>
+			<form
+				className="animate__animated animate__fadeIn animate__faster"
+				onSubmit={handleSignIn}
+			>
 				<Grid container>
 					<Grid item xs={12} sx={{ mt: 2 }}>
 						<TextField
