@@ -1,7 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
-export function useForm(intialFormValues = {}) {
+export function useForm(intialFormValues = {}, formValidations = {}) {
 	const [formState, setFormState] = useState(intialFormValues);
+	const [formValidation, setFormValidation] = useState({});
+
+	useEffect(() => {
+		createValidators();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [formState]);
+
+	const isFormValid = useMemo(() => {
+		for (const formValue of Object.keys(formValidation)) {
+			if (formValidation[formValue] !== null) {
+				return false;
+			}
+		}
+
+		return true;
+	}, [formValidation]);
 
 	const onInputchange = ({ target }) => {
 		const { name, value } = target;
@@ -15,5 +31,27 @@ export function useForm(intialFormValues = {}) {
 		setFormState(intialFormValues);
 	};
 
-	return { ...formState, formState, onInputchange, onResetForm };
+	const createValidators = () => {
+		const formCheckedValues = {};
+
+		for (const formField of Object.keys(formValidations)) {
+			const [fn, errorMessage] = formValidations[formField];
+
+			formCheckedValues[`${formField}Valid`] = fn(formState[formField])
+				? null
+				: errorMessage;
+		}
+
+		setFormValidation(formCheckedValues);
+		// console.log(formCheckedValues);
+	};
+
+	return {
+		...formState,
+		formState,
+		onInputchange,
+		onResetForm,
+		...formValidation,
+		isFormValid,
+	};
 }
