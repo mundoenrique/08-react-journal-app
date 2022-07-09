@@ -9,6 +9,10 @@ export function useForm(intialFormValues = {}, formValidations = {}) {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [formState]);
 
+	useEffect(() => {
+		setFormState(intialFormValues);
+	}, [intialFormValues]);
+
 	const isFormValid = useMemo(() => {
 		for (const formValue of Object.keys(formValidation)) {
 			if (formValidation[formValue] !== null) {
