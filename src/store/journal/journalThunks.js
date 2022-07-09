@@ -1,6 +1,7 @@
 import { collection, doc, setDoc } from 'firebase/firestore/lite';
 import { firebaseDB } from '../../firebase';
-import { addNewEmptyNote, setActiveNote, savingNewNota } from './';
+import { loadNotes } from '../../helpers';
+import { addNewEmptyNote, setActiveNote, savingNewNota, setNotes } from './';
 
 export function addNewNote() {
 	return async function (dispatch, getSate) {
@@ -10,7 +11,7 @@ export function addNewNote() {
 		const NewNote = {
 			title: '',
 			body: '',
-			date: new Date().getDate(),
+			date: new Date().getTime(),
 		};
 
 		const newdoc = doc(collection(firebaseDB, `${uid}/journal/notes`));
@@ -20,5 +21,12 @@ export function addNewNote() {
 
 		dispatch(addNewEmptyNote(NewNote));
 		dispatch(setActiveNote(NewNote));
+	};
+}
+
+export function LoadingNotes(uid) {
+	return async function (dispatch) {
+		const notes = await loadNotes(uid);
+		dispatch(setNotes(notes));
 	};
 }
