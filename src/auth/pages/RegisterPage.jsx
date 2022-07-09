@@ -75,7 +75,7 @@ export function RegisterPage() {
 							value={displayName}
 							onChange={onInputchange}
 							error={!!displayNameValid && formSubmitted}
-							helperText={displayNameValid}
+							helperText={formSubmitted && displayNameValid}
 						/>
 					</Grid>
 					<Grid item xs={12} sx={{ mt: 2 }}>
@@ -90,7 +90,7 @@ export function RegisterPage() {
 							value={email}
 							onChange={onInputchange}
 							error={!!emailValid && formSubmitted}
-							helperText={emailValid}
+							helperText={formSubmitted && emailValid}
 						/>
 					</Grid>
 					<Grid item xs={12} sx={{ mt: 2 }}>
@@ -104,7 +104,7 @@ export function RegisterPage() {
 							value={password}
 							onChange={onInputchange}
 							error={!!passwordValid && formSubmitted}
-							helperText={passwordValid}
+							helperText={formSubmitted && passwordValid}
 						/>
 					</Grid>
 					<Grid container spacing={2} sx={{ mb: 2, mt: 1 }}>
