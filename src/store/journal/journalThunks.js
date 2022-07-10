@@ -40,7 +40,7 @@ export function LoadingNotes(uid) {
 
 export function savingNote() {
 	return async function (dispatch, getSate) {
-		dispatch(setSaving);
+		dispatch(setSaving());
 		const {
 			auth: { uid },
 			journal: { active: note },

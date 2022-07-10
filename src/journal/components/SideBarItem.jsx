@@ -15,7 +15,7 @@ export function SideBarItem(note) {
 	const { title, body } = note;
 
 	const titleTemp = useMemo(() => {
-		return title.length > 17 ? `${title.subString(0, 17)}...` : title;
+		return title.length > 17 ? `${title.substring(0, 17)}...` : title;
 	}, [title]);
 
 	const activeNote = () => {
