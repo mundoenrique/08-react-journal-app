@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useMemo, useState } from 'react';
 
 export function useForm(intialFormValues = {}, formValidations = {}) {
@@ -6,7 +7,6 @@ export function useForm(intialFormValues = {}, formValidations = {}) {
 
 	useEffect(() => {
 		createValidators();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [formState]);
 
 	useEffect(() => {
