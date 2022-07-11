@@ -1,13 +1,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useMemo, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { SaveOutlined, UploadOutlined } from '@mui/icons-material';
+import {
+	DeleteOutlined,
+	SaveOutlined,
+	UploadOutlined,
+} from '@mui/icons-material';
 import { Button, Grid, IconButton, TextField, Typography } from '@mui/material';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
 import { ImageGallery } from '../components';
 import { useForm } from '../../hooks';
-import { savingNote, setActiveNote, uploadingFiles } from '../../store/journal';
+import {
+	deletingNote,
+	savingNote,
+	setActiveNote,
+	uploadingFiles,
+} from '../../store/journal';
 
 export function NoteView() {
 	const dispatch = useDispatch();
@@ -15,7 +24,7 @@ export function NoteView() {
 		journal: { messageSaved, active: note, isSaving },
 	} = useSelector((state) => state);
 
-	const { formState, title, body, date, imageUrls, onInputchange } =
+	const { formState, id, title, body, date, imageUrls, onInputchange } =
 		useForm(note);
 
 	const tempDate = useMemo(() => {
@@ -42,6 +51,10 @@ export function NoteView() {
 		if (target.files.length === 0) return;
 
 		dispatch(uploadingFiles(target.files));
+	};
+
+	const HandleDeleteNote = () => {
+		dispatch(deletingNote(id));
 	};
 
 	return (
@@ -107,6 +120,12 @@ export function NoteView() {
 					name="body"
 					onChange={onInputchange}
 				/>
+			</Grid>
+			<Grid container justifyContent="end">
+				<Button color="error" sx={{ mt: 2 }} onClick={HandleDeleteNote}>
+					<DeleteOutlined />
+					Borrar
+				</Button>
 			</Grid>
 			<ImageGallery images={imageUrls} />
 		</Grid>
