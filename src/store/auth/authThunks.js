@@ -4,6 +4,7 @@ import {
 	registerUserWithEmaiPassword,
 	signInWithGoogle,
 } from '../../firebase';
+import { clearNotes } from '../journal';
 import { checkingCredencial, login, logout } from './authSlice';
 
 export function checkingGoogleAuthentication() {
@@ -52,6 +53,7 @@ export function signOutUser() {
 	return async function (dispatch) {
 		await logoutFirebase();
 
+		dispatch(clearNotes());
 		dispatch(logout({}));
 	};
 }

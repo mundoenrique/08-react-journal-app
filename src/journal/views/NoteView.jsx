@@ -15,7 +15,8 @@ export function NoteView() {
 		journal: { messageSaved, active: note, isSaving },
 	} = useSelector((state) => state);
 
-	const { formState, title, body, date, onInputchange } = useForm(note);
+	const { formState, title, body, date, imageUrls, onInputchange } =
+		useForm(note);
 
 	const tempDate = useMemo(() => {
 		return new Date(date).toUTCString();
@@ -107,7 +108,7 @@ export function NoteView() {
 					onChange={onInputchange}
 				/>
 			</Grid>
-			<ImageGallery />
+			<ImageGallery images={imageUrls} />
 		</Grid>
 	);
 }
