@@ -1,7 +1,14 @@
+export const displayName = 'Demo User';
+export const email = 'demo@gmail.com';
+export const photoURL = 'https://demo.jpg';
+export const uid = 'ABC123';
+export const password = '123456';
+
 export const demoUser = {
-	uid: 'ABC123',
-	email: 'demo@gmail.com',
-	photoURL: 'https://demo.jpg',
+	displayName,
+	email,
+	photoURL,
+	uid,
 };
 
 export const initialState = {
