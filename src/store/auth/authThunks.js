@@ -57,3 +57,9 @@ export function signOutUser() {
 		dispatch(logout({}));
 	};
 }
+
+export function exampleThunks() {
+	return async function (dispatch) {
+		dispatch(checkingCredencial());
+	};
+}
