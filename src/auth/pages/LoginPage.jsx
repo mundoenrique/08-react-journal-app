@@ -55,8 +55,7 @@ export function LoginPage() {
 		}
 	};
 
-	const handleGoogleSignIn = (event) => {
-		event.preventDefault();
+	const handleGoogleSignIn = () => {
 		dispatch(checkingGoogleAuthentication());
 	};
 
@@ -88,6 +87,7 @@ export function LoginPage() {
 							type="password"
 							placeholder="Contraseña"
 							fullWidth
+							inputProps={{ 'data-testid': 'password' }}
 							disabled={isAuthenticating}
 							name="password"
 							value={password}
@@ -105,6 +105,7 @@ export function LoginPage() {
 								type="submit"
 								variant="contained"
 								fullWidth
+								aria-label="signin-btn"
 								disabled={isAuthenticating}
 							>
 								Login
@@ -114,6 +115,7 @@ export function LoginPage() {
 							<Button
 								variant="contained"
 								fullWidth
+								aria-label="google-btn"
 								disabled={isAuthenticating}
 								onClick={handleGoogleSignIn}
 							>
